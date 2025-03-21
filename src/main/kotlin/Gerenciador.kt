@@ -5,6 +5,10 @@ class Gerenciador {
         alunos.add(Aluno(nome, matricula))
     }
 
+    fun verificaSeListaAlunosHeVazia(): Boolean{
+        return alunos.isEmpty()
+    }
+
     fun buscarAlunoComBaseNaMatricula(matricula: String): Aluno?{
         return alunos.find { it.matricula == matricula }
     }
