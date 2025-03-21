@@ -32,4 +32,21 @@ class Gerenciador {
         val reprovados : List<Aluno> = alunos.filter { it.calculaMedia() < 7.0 }
         return reprovados
     }
+
+    fun gerarRelatorio(){
+        val aprovados = filtrarAlunosAprovados()
+        val reprovados = filtrarAlunosReprovados()
+
+        println("----- RELATÓRIO DE NOTAS ----- ")
+        println("**ALUNOS APROVADOS:**")
+        for(aprovado in aprovados){
+            println("- ${aprovado.nome.uppercase()} -> MÉDIA: ${aprovado.calculaMedia()}")
+        }
+        println()
+        println()
+        println("**ALUNOS REPROVADOS:**")
+        for(reprovado in reprovados){
+            println("- ${reprovado.nome.uppercase()} -> MÉDIA: ${reprovado.calculaMedia()}")
+        }
+    }
 }
