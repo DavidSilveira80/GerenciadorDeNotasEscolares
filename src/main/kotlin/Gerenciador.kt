@@ -5,6 +5,10 @@ class Gerenciador {
         alunos.add(Aluno(nome, matricula))
     }
 
+    fun buscarAlunoComBaseNaMatricula(matricula: String): Aluno?{
+        return alunos.find { it.matricula == matricula }
+    }
+
     fun adicionarNota(aluno: Aluno, nota: Double){
         aluno.adicionarNota(nota)
     }
