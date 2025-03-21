@@ -22,4 +22,14 @@ class Gerenciador {
             println(aluno.toString())
         }
     }
+
+    fun filtrarAlunosAprovados(): List<Aluno>{
+        val aprovados : List<Aluno> = alunos.filter { it.calculaMedia() >= 7.0 }
+        return aprovados
+    }
+
+    fun filtrarAlunosReprovados(): List<Aluno>{
+        val reprovados : List<Aluno> = alunos.filter { it.calculaMedia() < 7.0 }
+        return reprovados
+    }
 }
