@@ -49,14 +49,18 @@ fun main(){
                     if(gerenciador.verificaTamanhoListaNotas(aluno.notas)){
                         println("TODAS AS NOTAS FORAM LANÇADAS")
                     }else{
-                        print("Informe a nota do Aluno(Entre 0.0 e 10.0): ")
-                        val nota = readln().toDouble()
-                        if(gerenciador.validarSeNotaEstaEntre0E10(nota)){
-                            gerenciador.adicionarNota(aluno, nota)
-                        }else{
-                            println("Por favor, inserir notas entre 0.0 e 10.0")
-                        }
 
+                        print("Informe a nota do Aluno(Entre 0.0 e 10.0): ")
+                        try {
+                            val nota = readln().toDouble()
+                            if(gerenciador.validarSeNotaEstaEntre0E10(nota)){
+                                gerenciador.adicionarNota(aluno, nota)
+                            }else{
+                                println("Por favor, inserir notas entre 0.0 e 10.0")
+                            }
+                        } catch (e: NumberFormatException){
+                            println("Por favor, insira um valor numérico válido.")
+                        }
                     }
                 }else{
                     println("ALUNO NÃO MATRICULADO..")
