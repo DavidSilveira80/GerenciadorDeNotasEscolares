@@ -10,6 +10,9 @@ fun menuPrincipal(){
     println("------------------------------------")
 }
 
+fun verificaSeOptValida(opt: String): Boolean{
+    return !("12345".contains(opt))
+}
 
 fun main(){
     val gerenciador = Gerenciador()
@@ -22,10 +25,10 @@ fun main(){
             menuPrincipal()
             print("-> ")
             opt = readln()
-            if(opt != "1" && opt != "2" && opt != "3" && opt != "4" && opt != "5"){
+            if(verificaSeOptValida(opt)){
                 println("Por favor insira uma opção válida.")
             }
-        }while(opt != "1" && opt != "2" && opt != "3" && opt != "4" && opt != "5")
+        }while(verificaSeOptValida(opt))
 
         when(opt){
 
