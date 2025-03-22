@@ -6,11 +6,7 @@ class Aluno(val nome: String, val matricula: String) {
     }
 
     fun calculaMedia(): Double{
-        return if(notas.isEmpty()){
-            0.0
-        }else {
-            notas.sum() / notas.size
-        }
+        return notas.sum() / notas.size
     }
 
     override fun toString(): String {

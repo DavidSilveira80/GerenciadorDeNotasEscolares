@@ -26,6 +26,7 @@ class Gerenciador {
         return notas.size == NUMERO_MAXIMO_DE_NOTAS
     }
 
+
     // FUNCIONALIDADES
 
     fun cadastrarAluno(nome: String, matricula: String){
@@ -61,19 +62,23 @@ class Gerenciador {
     // GERADORES
 
     fun gerarRelatorio(){
-        val aprovados = filtrarAlunosAprovados()
-        val reprovados = filtrarAlunosReprovados()
+        if(alunos.all { it.notas.size == NUMERO_MAXIMO_DE_NOTAS }){
+            val aprovados = filtrarAlunosAprovados()
+            val reprovados = filtrarAlunosReprovados()
 
-        println("----- RELATÓRIO DE NOTAS ----- ")
-        println("**ALUNOS APROVADOS:**")
-        for(aprovado in aprovados){
-            println("- ${aprovado.nome.uppercase()} -> MÉDIA: ${aprovado.calculaMedia()}")
-        }
-        println()
-        println()
-        println("**ALUNOS REPROVADOS:**")
-        for(reprovado in reprovados){
-            println("- ${reprovado.nome.uppercase()} -> MÉDIA: ${reprovado.calculaMedia()}")
+            println("----- RELATÓRIO DE NOTAS ----- ")
+            println("**ALUNOS APROVADOS:**")
+            for(aprovado in aprovados){
+                println("- ${aprovado.nome.uppercase()} -> MÉDIA: ${aprovado.calculaMedia()}")
+            }
+            println()
+            println()
+            println("**ALUNOS REPROVADOS:**")
+            for(reprovado in reprovados){
+                println("- ${reprovado.nome.uppercase()} -> MÉDIA: ${reprovado.calculaMedia()}")
+            }
+        }else{
+            println("Ainda faltam notas à serem lançadas para gerar relatório.")
         }
     }
 }
