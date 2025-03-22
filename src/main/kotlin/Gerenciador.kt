@@ -2,12 +2,24 @@ class Gerenciador {
     val alunos = mutableListOf<Aluno>()
     val NUMERO_MAXIMO_DE_NOTAS = 3
 
-    fun cadastrarAluno(nome: String, matricula: String){
-        alunos.add(Aluno(nome, matricula))
-    }
+    // VERIFICAÇÕES
 
     fun verificaSeListaAlunosHeVazia(): Boolean{
         return alunos.isEmpty()
+    }
+
+    fun verificaSeMatriculaJaExiste(matricula: String): Boolean{
+        return alunos.any{it.matricula == matricula}
+    }
+
+    fun verificaSeNomeSeRepete(nome: String): Boolean{
+        return alunos.any{it.nome == nome}
+    }
+
+    // FUNCIONALIDADES
+
+    fun cadastrarAluno(nome: String, matricula: String){
+        alunos.add(Aluno(nome, matricula))
     }
 
     fun buscarAlunoComBaseNaMatricula(matricula: String): Aluno?{
@@ -28,6 +40,8 @@ class Gerenciador {
         }
     }
 
+    // FILTROS
+
     fun filtrarAlunosAprovados(): List<Aluno>{
         val aprovados : List<Aluno> = alunos.filter { it.calculaMedia() >= 7.0 }
         return aprovados
@@ -37,6 +51,8 @@ class Gerenciador {
         val reprovados : List<Aluno> = alunos.filter { it.calculaMedia() < 7.0 }
         return reprovados
     }
+
+    // GERADORES
 
     fun gerarRelatorio(){
         val aprovados = filtrarAlunosAprovados()

@@ -32,7 +32,11 @@ fun main(){
                 val nome = readln()
                 print("Informe a matrícula única do Aluno: ")
                 val matricula = readln()
-                gerenciador.cadastrarAluno(nome, matricula)
+                if(gerenciador.verificaSeMatriculaJaExiste(matricula) || gerenciador.verificaSeNomeSeRepete(nome)){
+                    println("ALUNO JÁ ESTÁ MATRICULADO.")
+                }else{
+                    gerenciador.cadastrarAluno(nome, matricula)
+                }
             }
 
             "2" -> {
