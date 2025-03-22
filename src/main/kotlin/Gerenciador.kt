@@ -5,13 +5,7 @@ class Gerenciador {
     // VALIDAÇÕES
 
     fun validarSeNotaEstaEntre0E10(nota: Double): Boolean{
-        val resp : Boolean
-        if(nota in 0.0..10.0){
-            resp = true
-        }else{
-            resp = false
-        }
-        return resp
+        return nota in 0.0..10.0
     }
 
     // VERIFICAÇÕES
