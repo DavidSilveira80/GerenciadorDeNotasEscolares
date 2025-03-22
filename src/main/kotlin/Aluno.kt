@@ -1,8 +1,13 @@
 class Aluno(val nome: String, val matricula: String) {
     private var notas = mutableListOf<Double>()
+    private var media = 0.0
 
     fun getNotas(): List<Double>{
         return notas.toList()
+    }
+
+    fun getMedia(): Double{
+        return media
     }
 
     fun adicionarNota(nota: Double){
@@ -15,7 +20,12 @@ class Aluno(val nome: String, val matricula: String) {
     }
 
     fun calculaMedia(): Double{
-        return notas.sum() / notas.size
+        if(notas.isEmpty()){
+            return 0.0
+        }else{
+            media = notas.sum() / notas.size
+            return notas.sum() / notas.size
+        }
     }
 
     override fun toString(): String {

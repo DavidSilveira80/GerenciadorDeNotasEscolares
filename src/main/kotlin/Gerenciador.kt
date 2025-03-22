@@ -66,13 +66,13 @@ class Gerenciador {
             println("----- RELATÓRIO DE NOTAS ----- ")
             println("**ALUNOS APROVADOS:**")
             for(aprovado in aprovados){
-                println("- ${aprovado.nome.uppercase()} -> MÉDIA: ${aprovado.calculaMedia()}")
+                println("- ${aprovado.nome.uppercase()} -> MÉDIA: ${aprovado.getMedia()}")
             }
             println()
             println()
             println("**ALUNOS REPROVADOS:**")
             for(reprovado in reprovados){
-                println("- ${reprovado.nome.uppercase()} -> MÉDIA: ${reprovado.calculaMedia()}")
+                println("- ${reprovado.nome.uppercase()} -> MÉDIA: ${reprovado.getMedia()}")
             }
         }else{
             println("Ainda faltam notas à serem lançadas para gerar relatório.")
