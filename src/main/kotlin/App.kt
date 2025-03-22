@@ -11,7 +11,10 @@ fun menuPrincipal(){
 }
 
 
+
 fun main(){
+    val gerenciador = Gerenciador()
+
     var paradaDeFluxo = "C"
     var opt = ""
 
@@ -23,11 +26,45 @@ fun main(){
         }while(opt != "1" && opt != "2" && opt != "3" && opt != "4" && opt != "5")
 
         when(opt){
-            "1" -> println("CADASTRAR ALUNO")
-            "2" -> println("ADICIONAR NOTA")
-            "3" -> println("GERAR RELATÓRIO")
-            "4" -> println("LISTAR ALUNOS")
-            "5" -> paradaDeFluxo = "S"
+            "1" -> {
+                println("CADASTRAR ALUNO")
+                print("Informe o nome completo do Aluno: ")
+                val nome = readln()
+                print("Informe a matrícula única do Aluno: ")
+                val matricula = readln()
+                gerenciador.cadastrarAluno(nome, matricula)
+            }
+
+            "2" ->{
+                println("ADICIONAR NOTA")
+
+                print("Informe a matrícula do Aluno: ")
+                val matricula = readln()
+                val aluno = gerenciador.buscarAlunoComBaseNaMatricula(matricula)
+                if(aluno != null){
+                    print("Informe a nota do Aluno: ")
+                    val nota = readln().toDouble()
+                    gerenciador.adicionarNota(aluno, nota)
+                }else{
+                    println("ALUNO NÃO MATRICULADO..")
+                }
+            }
+
+            "3" ->{
+                println("GERAR RELATÓRIO.")
+                gerenciador.gerarRelatorio()
+            }
+
+            "4" -> {
+                println("LISTAR ALUNOS.")
+                println()
+                gerenciador.listarAlunos()
+            }
+
+            "5" ->{
+                println("ENCERRANDO SISTEMA.")
+                paradaDeFluxo = "S"
+            }
         }
     }
 }

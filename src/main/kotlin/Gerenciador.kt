@@ -14,12 +14,16 @@ class Gerenciador {
     }
 
     fun adicionarNota(aluno: Aluno, nota: Double){
-        aluno.adicionarNota(nota)
+        if(aluno.notas.size <= 3){
+            aluno.adicionarNota(nota)
+        }else{
+            println("TODAS AS NOTAS DO ALUNO FORAM LANÇADAS.")
+        }
     }
 
     fun listarAlunos(){
         for(aluno in alunos){
-            println(aluno.toString())
+            println(" ${aluno.nome} ${aluno.notas}")
         }
     }
 
