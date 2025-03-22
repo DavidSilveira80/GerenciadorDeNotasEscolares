@@ -23,8 +23,8 @@ class Aluno(val nome: String, val matricula: String) {
         if(notas.isEmpty()){
             return 0.0
         }else{
-            media = notas.sum() / notas.size
-            return notas.sum() / notas.size
+            media = notas.average()
+            return media
         }
     }
 

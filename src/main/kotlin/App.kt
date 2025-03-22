@@ -1,17 +1,18 @@
 fun menuPrincipal(){
-    println("------------------------------------")
-    println("   GERENCIADOR DE NOTAS ESCOLARES   ")
+    println("-------------------------------------------------")
+    println("   GERENCIADOR DE NOTAS ESCOLARES                ")
     println()
-    println("      1 - CADASTRAR ALUNO           ")
-    println("      2 - ADICIONAR NOTA            ")
-    println("      3 - GERAR RELATÓRIO           ")
-    println("      4 - LISTAR ALUNOS             ")
-    println("      5 - SAIR                      ")
-    println("------------------------------------")
+    println("      1 - CADASTRAR ALUNO                        ")
+    println("      2 - ADICIONAR NOTA                         ")
+    println("      3 - COMPUTAR APROVADOS E REPROVADOS        ")
+    println("      4 - LISTAR ALUNOS                          ")
+    println("      5 - GERAR RELATÓRIO                        ")
+    println("      6 - SAIR                                   ")
+    println("-------------------------------------------------")
 }
 
 fun verificaSeOptValida(opt: String): Boolean{
-    return !("12345".contains(opt))
+    return !("123456".contains(opt))
 }
 
 fun main(){
@@ -70,8 +71,8 @@ fun main(){
             }
 
             "3" -> {
-                println("GERAR RELATÓRIO.")
-                gerenciador.gerarRelatorio()
+                println("COMPUTAR APROVADOS E REPROVADOS.")
+                gerenciador.computarAlunosAprovadosEReprovados()
             }
 
             "4" -> {
@@ -85,6 +86,10 @@ fun main(){
             }
 
             "5" -> {
+                println("GERAR RELATÓRIO.")
+                gerenciador.gerarRelatorio()
+            }
+            "6" ->{
                 println("ENCERRANDO SISTEMA.")
                 continuarFluxo = false
             }
