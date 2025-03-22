@@ -1,6 +1,6 @@
 class Gerenciador {
     val alunos = mutableListOf<Aluno>()
-    val NUMERO_MAXIMO_DE_NOTAS = 3
+    val NUMERO_MAXIMO_DE_NOTAS = 4
 
     // VERIFICAÇÕES
 
@@ -16,6 +16,10 @@ class Gerenciador {
         return alunos.any{it.nome == nome}
     }
 
+    fun verificaTamanhoListaNotas(notas: List<Double>): Boolean{
+        return notas.size == NUMERO_MAXIMO_DE_NOTAS
+    }
+
     // FUNCIONALIDADES
 
     fun cadastrarAluno(nome: String, matricula: String){
@@ -27,11 +31,7 @@ class Gerenciador {
     }
 
     fun adicionarNota(aluno: Aluno, nota: Double){
-        if(aluno.notas.size <= NUMERO_MAXIMO_DE_NOTAS){
             aluno.adicionarNota(nota)
-        }else{
-            println("TODAS AS NOTAS DO ALUNO FORAM LANÇADAS.")
-        }
     }
 
     fun listarAlunos(){

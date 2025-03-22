@@ -46,9 +46,13 @@ fun main(){
                 val matricula = readln()
                 val aluno = gerenciador.buscarAlunoComBaseNaMatricula(matricula)
                 if(aluno != null){
-                    print("Informe a nota do Aluno: ")
-                    val nota = readln().toDouble()
-                    gerenciador.adicionarNota(aluno, nota)
+                    if(gerenciador.verificaTamanhoListaNotas(aluno.notas)){
+                        println("TODAS AS NOTAS FORAM LANÇADAS")
+                    }else{
+                        print("Informe a nota do Aluno: ")
+                        val nota = readln().toDouble()
+                        gerenciador.adicionarNota(aluno, nota)
+                    }
                 }else{
                     println("ALUNO NÃO MATRICULADO..")
                 }
