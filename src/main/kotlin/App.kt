@@ -52,18 +52,14 @@ fun main(){
                 val matricula = readln()
                 val aluno = gerenciador.buscarAlunoComBaseNaMatricula(matricula)
                 if(aluno != null){
-                    if(gerenciador.verificaTamanhoListaNotas(aluno.notas)){
+                    if(gerenciador.verificaTamanhoListaNotas(aluno.getNotas())){
                         println("TODAS AS NOTAS FORAM LANÇADAS")
                     }else{
 
                         print("Informe a nota do Aluno(Entre 0.0 e 10.0): ")
                         try {
                             val nota = readln().toDouble()
-                            if(gerenciador.validarSeNotaEstaEntre0E10(nota)){
                                 gerenciador.adicionarNota(aluno, nota)
-                            }else{
-                                println("Por favor, inserir notas entre 0.0 e 10.0")
-                            }
                         } catch (e: NumberFormatException){
                             println("Por favor, insira um valor numérico válido.")
                         }

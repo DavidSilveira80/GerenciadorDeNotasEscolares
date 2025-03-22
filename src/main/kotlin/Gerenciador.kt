@@ -4,9 +4,6 @@ class Gerenciador {
 
     // VALIDAÇÕES
 
-    fun validarSeNotaEstaEntre0E10(nota: Double): Boolean{
-        return nota in 0.0..10.0
-    }
 
     // VERIFICAÇÕES
 
@@ -43,7 +40,7 @@ class Gerenciador {
 
     fun listarAlunos(){
         for(aluno in alunos){
-            println(" ${aluno.nome} ${aluno.notas}")
+            println(" ${aluno.nome} ${aluno.getNotas()}")
         }
     }
 
@@ -62,7 +59,7 @@ class Gerenciador {
     // GERADORES
 
     fun gerarRelatorio(){
-        if(alunos.all { it.notas.size == NUMERO_MAXIMO_DE_NOTAS }){
+        if(alunos.all { it.getNotas().size == NUMERO_MAXIMO_DE_NOTAS }){
             val aprovados = filtrarAlunosAprovados()
             val reprovados = filtrarAlunosReprovados()
 

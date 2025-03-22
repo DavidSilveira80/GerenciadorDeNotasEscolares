@@ -1,8 +1,17 @@
 class Aluno(val nome: String, val matricula: String) {
-    var notas = mutableListOf<Double>()
+    private var notas = mutableListOf<Double>()
+
+    fun getNotas(): List<Double>{
+        return notas.toList()
+    }
 
     fun adicionarNota(nota: Double){
-        notas.add(nota)
+        if(nota in 0.0..10.0){
+            notas.add(nota)
+        }else{
+            println("Nota fora da faixa de 0.0 e 10.0")
+        }
+
     }
 
     fun calculaMedia(): Double{
