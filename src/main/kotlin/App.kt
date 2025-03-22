@@ -11,14 +11,13 @@ fun menuPrincipal(){
 }
 
 
-
 fun main(){
     val gerenciador = Gerenciador()
 
-    var paradaDeFluxo = "C"
+    var continuarFluxo = true
     var opt = ""
 
-    while(paradaDeFluxo == "C"){
+    while(continuarFluxo){
         do{
             menuPrincipal()
             print("-> ")
@@ -26,6 +25,7 @@ fun main(){
         }while(opt != "1" && opt != "2" && opt != "3" && opt != "4" && opt != "5")
 
         when(opt){
+
             "1" -> {
                 println("CADASTRAR ALUNO")
                 print("Informe o nome completo do Aluno: ")
@@ -35,7 +35,7 @@ fun main(){
                 gerenciador.cadastrarAluno(nome, matricula)
             }
 
-            "2" ->{
+            "2" -> {
                 println("ADICIONAR NOTA")
 
                 print("Informe a matrícula do Aluno: ")
@@ -50,7 +50,7 @@ fun main(){
                 }
             }
 
-            "3" ->{
+            "3" -> {
                 println("GERAR RELATÓRIO.")
                 gerenciador.gerarRelatorio()
             }
@@ -58,12 +58,16 @@ fun main(){
             "4" -> {
                 println("LISTAR ALUNOS.")
                 println()
-                gerenciador.listarAlunos()
+                if(gerenciador.verificaSeListaAlunosHeVazia()){
+                    println("NÃO HÁ ALUNOS MATRICULADOS.")
+                }else{
+                    gerenciador.listarAlunos()
+                }
             }
 
             "5" ->{
                 println("ENCERRANDO SISTEMA.")
-                paradaDeFluxo = "S"
+                continuarFluxo = false
             }
         }
     }
