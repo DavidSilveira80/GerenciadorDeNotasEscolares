@@ -11,27 +11,27 @@ fun menuPrincipal(){
     println("-------------------------------------------------")
 }
 
-fun verificaSeOptValida(opt: String): Boolean{
-    return !("123456".contains(opt))
+fun verificaSeOptValida(opcao: String): Boolean{
+    return !("123456".contains(opcao))
 }
 
 fun main(){
     val gerenciador = Gerenciador()
 
     var continuarFluxo = true
-    var opt = ""
+    var opcaoMenuPrincipal = ""
 
     while(continuarFluxo){
         do{
             menuPrincipal()
             print("-> ")
-            opt = readln()
-            if(verificaSeOptValida(opt)){
+            opcaoMenuPrincipal = readln()
+            if(verificaSeOptValida(opcaoMenuPrincipal)){
                 println("Por favor insira uma opção válida.")
             }
-        }while(verificaSeOptValida(opt))
+        }while(verificaSeOptValida(opcaoMenuPrincipal))
 
-        when(opt){
+        when(opcaoMenuPrincipal){
 
             "1" -> {
                 println("CADASTRAR ALUNO")

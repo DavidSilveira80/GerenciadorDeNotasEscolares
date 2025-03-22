@@ -1,23 +1,23 @@
 class Gerenciador {
-    val alunos = mutableListOf<Aluno>()
+    val alunosMatriculados = mutableListOf<Aluno>()
     val NUMERO_MAXIMO_DE_NOTAS = 4
-    var aprovados = mutableListOf<Aluno>()
-    var reprovados = mutableListOf<Aluno>()
+    var alunosAprovados = mutableListOf<Aluno>()
+    var alunosReprovados = mutableListOf<Aluno>()
     // VALIDAÇÕES
 
 
     // VERIFICAÇÕES
 
     fun verificaSeListaAlunosHeVazia(): Boolean {
-        return alunos.isEmpty()
+        return alunosMatriculados.isEmpty()
     }
 
     fun verificaSeMatriculaJaExiste(matricula: String): Boolean {
-        return alunos.any { it.matricula == matricula }
+        return alunosMatriculados.any { it.matricula == matricula }
     }
 
     fun verificaSeNomeSeRepete(nome: String): Boolean {
-        return alunos.any { it.nome == nome }
+        return alunosMatriculados.any { it.nome == nome }
     }
 
     fun verificaTamanhoListaNotas(notas: List<Double>): Boolean {
@@ -28,11 +28,11 @@ class Gerenciador {
     // FUNCIONALIDADES
 
     fun cadastrarAluno(nome: String, matricula: String) {
-        alunos.add(Aluno(nome, matricula))
+        alunosMatriculados.add(Aluno(nome, matricula))
     }
 
     fun buscarAlunoComBaseNaMatricula(matricula: String): Aluno? {
-        return alunos.find { it.matricula == matricula }
+        return alunosMatriculados.find { it.matricula == matricula }
     }
 
     fun adicionarNota(aluno: Aluno, nota: Double) {
@@ -40,13 +40,13 @@ class Gerenciador {
     }
 
     fun listarAlunos() {
-        for (aluno in alunos) {
+        for (aluno in alunosMatriculados) {
             println(" ${aluno.nome} ${aluno.getNotas()}")
         }
     }
 
     fun computarAlunosAprovadosEReprovados() {
-        if (alunos.all { it.getNotas().size == NUMERO_MAXIMO_DE_NOTAS }) {
+        if (alunosMatriculados.all { it.getNotas().size == NUMERO_MAXIMO_DE_NOTAS }) {
             filtrarAlunosAprovados()
             filtrarAlunosReprovados()
         } else {
@@ -57,18 +57,18 @@ class Gerenciador {
     // FILTROS
 
     fun filtrarAlunosAprovados(){
-        for (aluno in alunos) {
+        for (aluno in alunosMatriculados) {
             if (aluno.calculaMedia() >= 7.0) {
-                aprovados.add(aluno)
+                alunosAprovados.add(aluno)
             }
         }
 
     }
 
     fun filtrarAlunosReprovados(){
-        for (aluno in alunos) {
+        for (aluno in alunosMatriculados) {
             if (aluno.calculaMedia() < 7.0) {
-                reprovados.add(aluno)
+                alunosReprovados.add(aluno)
             }
         }
     }
@@ -79,16 +79,14 @@ class Gerenciador {
 
         println("----- RELATÓRIO DE NOTAS ----- ")
         println("**ALUNOS APROVADOS:**")
-        for (aprovado in aprovados) {
+        for (aprovado in alunosAprovados) {
             println("- ${aprovado.nome.uppercase()} -> MÉDIA: ${aprovado.getMedia()}")
         }
         println()
         println()
         println("**ALUNOS REPROVADOS:**")
-        for (reprovado in reprovados) {
+        for (reprovado in alunosReprovados) {
             println("- ${reprovado.nome.uppercase()} -> MÉDIA: ${reprovado.getMedia()}")
         }
-
     }
-
 }
