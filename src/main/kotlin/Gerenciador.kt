@@ -2,6 +2,18 @@ class Gerenciador {
     val alunos = mutableListOf<Aluno>()
     val NUMERO_MAXIMO_DE_NOTAS = 4
 
+    // VALIDAÇÕES
+
+    fun validarSeNotaEstaEntre0E10(nota: Double): Boolean{
+        val resp : Boolean
+        if(nota in 0.0..10.0){
+            resp = true
+        }else{
+            resp = false
+        }
+        return resp
+    }
+
     // VERIFICAÇÕES
 
     fun verificaSeListaAlunosHeVazia(): Boolean{
