@@ -22,6 +22,9 @@ fun main(){
             menuPrincipal()
             print("-> ")
             opt = readln()
+            if(opt != "1" && opt != "2" && opt != "3" && opt != "4" && opt != "5"){
+                println("Por favor insira uma opção válida.")
+            }
         }while(opt != "1" && opt != "2" && opt != "3" && opt != "4" && opt != "5")
 
         when(opt){
@@ -82,7 +85,7 @@ fun main(){
                 }
             }
 
-            "5" ->{
+            "5" -> {
                 println("ENCERRANDO SISTEMA.")
                 continuarFluxo = false
             }
