@@ -1,5 +1,6 @@
 class Gerenciador {
     val alunos = mutableListOf<Aluno>()
+    val NUMERO_MAXIMO_DE_NOTAS = 3
 
     fun cadastrarAluno(nome: String, matricula: String){
         alunos.add(Aluno(nome, matricula))
@@ -14,7 +15,7 @@ class Gerenciador {
     }
 
     fun adicionarNota(aluno: Aluno, nota: Double){
-        if(aluno.notas.size <= 3){
+        if(aluno.notas.size <= NUMERO_MAXIMO_DE_NOTAS){
             aluno.adicionarNota(nota)
         }else{
             println("TODAS AS NOTAS DO ALUNO FORAM LANÇADAS.")
