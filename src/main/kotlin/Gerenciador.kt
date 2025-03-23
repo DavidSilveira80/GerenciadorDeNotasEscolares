@@ -47,6 +47,9 @@ class Gerenciador {
 
     fun computarAlunosAprovadosEReprovados() {
         if (alunosMatriculados.all { it.getNotas().size == NUMERO_MAXIMO_DE_NOTAS }) {
+            for(aluno in alunosMatriculados){
+                aluno.calculaMedia()
+            }
             filtrarAlunosAprovados()
             filtrarAlunosReprovados()
         } else {
@@ -58,7 +61,7 @@ class Gerenciador {
 
     fun filtrarAlunosAprovados(){
         for (aluno in alunosMatriculados) {
-            if (aluno.calculaMedia() >= 7.0) {
+            if (aluno.getMedia() >= 7.0) {
                 alunosAprovados.add(aluno)
             }
         }
@@ -67,7 +70,7 @@ class Gerenciador {
 
     fun filtrarAlunosReprovados(){
         for (aluno in alunosMatriculados) {
-            if (aluno.calculaMedia() < 7.0) {
+            if (aluno.getMedia() < 7.0) {
                 alunosReprovados.add(aluno)
             }
         }

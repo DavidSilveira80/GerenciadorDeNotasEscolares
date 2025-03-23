@@ -19,12 +19,11 @@ class Aluno(val nome: String, val matricula: String) {
 
     }
 
-    fun calculaMedia(): Double{
+    fun calculaMedia(){
         if(notas.isEmpty()){
-            return 0.0
+            media = 0.0
         }else{
             media = notas.average()
-            return media
         }
     }
 
