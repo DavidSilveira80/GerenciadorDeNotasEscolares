@@ -81,15 +81,20 @@ class Gerenciador {
     fun gerarRelatorio() {
 
         println("----- RELATÓRIO DE NOTAS ----- ")
-        println("**ALUNOS APROVADOS:**")
-        for (aprovado in alunosAprovados) {
-            println("- ${aprovado.nome.uppercase()} -> MÉDIA: ${aprovado.getMedia()}")
+        imprimirGruposAlunos("ALUNOS APROVADOS", alunosAprovados)
+        println()
+        imprimirGruposAlunos("ALUNOS REPROVADOS", alunosReprovados)
+    }
+
+    fun imprimirGruposAlunos(titulo: String, alunos: List<Aluno>){
+        println("**$titulo**")
+
+        if(alunos.isEmpty()){
+            println("Nenhum aluno nesta categoria.")
+            return
         }
-        println()
-        println()
-        println("**ALUNOS REPROVADOS:**")
-        for (reprovado in alunosReprovados) {
-            println("- ${reprovado.nome.uppercase()} -> MÉDIA: ${reprovado.getMedia()}")
+        alunos.sortedBy { it.nome }.forEach {aluno ->
+            println("- ${aluno.nome.uppercase()} -> MÉDIA: ${"%.1f".format(aluno.getMedia())}")
         }
     }
 }
